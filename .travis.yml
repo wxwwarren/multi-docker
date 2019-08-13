@@ -9,15 +9,15 @@ script:
   - docker run -e CI=true wxwwarren:react-test npm run test
 
 after_success:
-  - docker build -t wxwwarren/multi-client ./client
-  - docker build -t wxwwarren/multi-nginx ./nginx
-  - docker build -t wxwwarren/multi-server ./server
-  - docker build -t wxwwarren/multi-worker ./worker
+  - docker build -t wxwwarren:multi-client ./client
+  - docker build -t wxwwarren:multi-nginx ./nginx
+  - docker build -t wxwwarren:multi-server ./server
+  - docker build -t wxwwarren:multi-worker ./worker
   # Log in to docker CLI
   # Push images to docker hub
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push wxwwarren/multi-client
-  - docker push wxwwarren/multi-nginx
-  - docker push wxwwarren/multi-server
-  - docker push wxwwarren/multi-worker
+  - docker push wxwwarren:multi-client
+  - docker push wxwwarren:multi-nginx
+  - docker push wxwwarren:multi-server
+  - docker push wxwwarren:multi-worker
 
